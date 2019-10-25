@@ -1,0 +1,12 @@
+# Ignore experiments and tests
+/experiments
+/test
+/data
+
+# Ignore some files
+index2.html
+index3.html
+test*
+*.glb
+*.gltf
+*.obj
