@@ -1,33 +1,37 @@
 AFRAME.registerComponent('bulletin-text', {
   
     init: function () {
-      // poll database of messages
+      var el = this.el;
 
+      // poll database of messages
+      this.bindMethods();
       this.el.addEventListener('loaded', this.load.bind(this));
     },
     
     load: function() {
       var scene = document.querySelector('a-scene');
-      var el = document.createElement('a-box');
 
-      el.setAttribute('color', '#00356B');
-      scene.appendChild(el);
-      
-      // const num = 4;
-      // const length = 2.5;
-      
-      // for (var i = 0; i < this.filesets.length; i++) {
-      //   var x = i % num;
-      //   var y = ~~(i/num) % num;
-      //   var z = ~~(i/(num * num)) % num;
-      //   var el = document.createElement('a-entity');
-      //   el.setAttribute('gltf-model','url(../../data/'+this.filesets[i%this.filesets.length]+'.glb)');
-      //   el.setAttribute('mixin', 'surface');
-      //   el.object3D.position.set(length/2 - x*(length/(num-1)),
-      //                            length/2 - y*(length/(num-1))+1.6,
-      //                            length/2 - z*(length/(num-1))-1.5);
-      //   scene.appendChild(el);
-      //}
+      scene.addEventListener('textPlace', this.onTextPlaced);
 
+      // var board = document.createElement('a-entity');
+      // board.setAttribute('geometry', 'primitive: cylinder; height: 3; radius: 3; open-ended: true');
+      // board.setAttribute('material', 'color: #F7B860; opacity: 0.7; side: double');
+      // board.setAttribute('position', '0 2 0');
+
+      // scene.appendChild(board);
+    },
+
+    bindMethods: function() {
+      this.onTextPlaced = this.onTextPlaced.bind(this);
+    },
+
+    onTextPlaced: function() {
+      var cam = document.getElementById('cam');
+      console.log('detected enter');
+      var position = cam.object3D.position;
+      var rotation = cam.object3D.rotation;
+      console.log(position);
+      console.log(rotation.x);
+      console.log(rotation.y);
     }
   });

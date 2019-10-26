@@ -3,10 +3,11 @@ AFRAME.registerSystem('interaction', {
   init: function () {
     var inputActions = {
       default: {
-        toggleRaycast: { label: 'Toggle raycast' },
-        scroll: { label: 'change later' },
-        triggerdown: { label: 'change later' },
-        gripdown: { label: 'change later' }
+        // toggleRaycast: { label: 'Toggle raycast' },
+        // scroll: { label: 'change later' },
+        // triggerdown: { label: 'change later' },
+        // gripdown: { label: 'change later' }
+        textPlace: {label: 'Place text'}
       }
     };
     
@@ -15,30 +16,23 @@ AFRAME.registerSystem('interaction', {
       mappings: {
         default: {
           common: {
-//            mousedown: 'gripdown',
-//            touchstart: 'gripdown'
+            triggerdown: 'textPlace'
           },
           
           'vive-controls': {
-            'menu.down': 'toggleRaycast',
-            
-            'axismove': 'scroll',
+            'trigger.down': 'textPlace',
           },
 
           'oculus-touch-controls': {
-            'abutton.down': 'toggleRaycast',
-            'xbutton.down': 'toggleRaycast',
-            
-            'axismove': 'scroll',
+            'grip.down': 'textPlace',
           },
 
-          'windows-motion-controls': {
-            'menu.down': 'toggleRaycast'
-          },
+          // 'windows-motion-controls': {
+          //   'menu.down': 'toggleRaycast'
+          // },
 
-          'keyboard': {
-            'mousedown': 'gripdown',
-            'mousedown': 'triggerdown'
+          keyboard: {
+            'enter_down': 'textPlace',
           }
         }
       }

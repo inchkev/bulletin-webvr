@@ -7,16 +7,16 @@
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras/dist/aframe-extras.min.js"></script>
 
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
-    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
-
-    <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-tooltip-component/dist/aframe-tooltip-component.min.js"></script>
     <script src="https://unpkg.com/aframe-input-mapping-component/dist/aframe-input-mapping-component.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js
+
+    "></script>
 
     <script src="components/ui-raycaster.js"></script>
     <script src="components/progressive-controls.js"></script>
+    <script src="components/bulletin.js"></script>
     <script src="components/bulletin-text.js"></script>
     <script src="systems/interaction.js"></script>
   </head>
@@ -44,14 +44,9 @@
       <!-- <a-sky id="background-360-image" radius="10" src="#grass"></a-sky> -->
 
       <!-- Billboard -->
-      <a-entity bulletin-text
-        geometry="primitive: cylinder; height: 3; radius: 3; open-ended: true"
-        material="color: #F7B860; opacity: 0.7; side: double"
-        position="0 2 0">
-      </a-entity>
+      <a-entity bulletin></a-entity>
+      <a-entity bulletin-text></a-entity>
 
-      <!-- open-ended="true"
-      height=4.5 radius=5 -->
       <!-- Controls -->
       <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true">
         <!-- <a-entity id="rhand" class="right-controller" haptics controller-interaction ui-raycaster></a-entity>
@@ -59,7 +54,7 @@
       </a-entity>
 
       <!-- Camera -->
-      <a-entity id="cam" camera look-controls position="0 1.6 0" ></a-entity>
+      <a-entity id="cam" class="cam" camera look-controls position="0 1.6 0" ></a-entity>
       <!-- <a-entity id="cam" camera universal-controls='movementControls: universal-oculus-touch, keyboard;'></a-entity> -->
 
     </a-scene>
