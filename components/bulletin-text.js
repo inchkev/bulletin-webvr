@@ -10,7 +10,7 @@ AFRAME.registerComponent('bulletin-text', {
       var scene = document.querySelector('a-scene');
       var el = document.createElement('a-box');
 
-      el.setAttribute('mixin', 'note');
+      el.setAttribute('color', '#00356B');
       scene.appendChild(el);
       
       // const num = 4;

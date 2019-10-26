@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>VR Bulletin Boards</title>
     
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras/dist/aframe-extras.min.js"></script>
 
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
@@ -15,13 +15,6 @@
     <script src="https://unpkg.com/aframe-tooltip-component/dist/aframe-tooltip-component.min.js"></script>
     <script src="https://unpkg.com/aframe-input-mapping-component/dist/aframe-input-mapping-component.min.js"></script>
     
-    <script src="components/add-collision.js"></script>
-    <script src="components/add-shaders.js"></script>
-    <script src="components/model-opacity.js"></script>
-    <script src="components/sides.js"></script>
-    <script src="components/surface-interaction.js"></script>
-    <script src="components/surface-ui.js"></script>
-    <script src="components/controller-interaction.js"></script>
     <script src="components/ui-raycaster.js"></script>
     <script src="components/progressive-controls.js"></script>
     <script src="components/bulletin-text.js"></script>
@@ -30,28 +23,44 @@
   </head>
   
   <body class="a-body" id="body">
-    <a-scene id="billboard" stats> <!-- environment="preset: default; grid: crosses" physics="gravity: 0; debug: false" stats> -->
+    <a-scene id="billboard" environment="preset: forest" stats> <!-- environment="preset: default; grid: crosses" physics="gravity: 0; debug: false" stats> -->
       <a-assets id="assets">
-        <img id="grass" src="scenicpanorama.jpg">
+        <a-mixin id="mycursor" position="0 0 -0.5" cursor raycaster
+          geometry="primitive: ring; radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32; flatShading: true"
+          material="color: white; shader: flat"></a-mixin>
+        </a-mixin>
 
         <a-mixin id="note" class="note"
           color="#4CC3D9">
         </a-mixin>
+
+        <img id="grass" src="scenicpanorama.jpg">
+        <img id="" src="">
+        <img id="" src="">
+
       </a-assets>
 
       <!-- Background -->
-      <a-sky id="background-360-image" radius="10" src="#grass"></a-sky>
+      <!-- <a-sky id="background-360-image" radius="10" src="#grass"></a-sky> -->
 
-      <!-- <a-entity bulletin-text></a-entity> -->
-
+      <!-- Billboard -->
+      <a-entity bulletin-text
+        geometry="primitive: cylinder; height: 3; radius: 3; open-ended: true"
+        material="color: #F7B860; opacity: 0.7; side: double"
+        position="0 2 0">
+      </a-entity>
+      
+      <!-- open-ended="true"
+      height=4.5 radius=5 -->
       <!-- Controls -->
-      <!-- <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true">
-        <a-entity id="rhand" class="right-controller" haptics controller-interaction ui-raycaster></a-entity>
-        <a-entity id="lhand" class="left-controller"  haptics controller-interaction ui-raycaster></a-entity>
-      </a-entity> -->
+      <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true">
+        <!-- <a-entity id="rhand" class="right-controller" haptics controller-interaction ui-raycaster></a-entity>
+        <a-entity id="lhand" class="left-controller"  haptics controller-interaction ui-raycaster></a-entity> -->
+      </a-entity>
       
       <!-- Camera -->
-      <a-entity id="cam" camera universal-controls='movementControls: universal-oculus-touch, keyboard;'></a-entity>
+      <a-entity id="cam" camera look-controls position="0 1.6 0" ></a-entity>
+      <!-- <a-entity id="cam" camera universal-controls='movementControls: universal-oculus-touch, keyboard;'></a-entity> -->
       
     </a-scene>
   </body>
