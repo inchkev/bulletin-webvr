@@ -4,7 +4,7 @@
 ## Inspiration
 ## How we built it
 ## Next steps
-## Team
+## Team Members
 - Kevin Chen
 - Mykyta Solonko
 - Hamilton Wan
