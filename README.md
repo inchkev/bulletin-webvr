@@ -1,5 +1,5 @@
 # Bulletin
-![Bulletin VR](assets/blong_large.png)
+![Bulletin VR](project/static/assets/blong_large.png)
 
 ## Inspiration
 ## How we built it
@@ -10,4 +10,4 @@
 - Hamilton Wan
 - Brandon Zhu
 
-![B VR](assets/bulletin.png)
+![B VR](project/static/assets/bulletin.png)

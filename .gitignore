@@ -1,7 +1,5 @@
 # Ignore experiments and tests
-/experiments
-/test
-/data
+/__pycache__
 
 # Ignore some files
 test*
