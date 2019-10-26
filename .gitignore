@@ -4,9 +4,8 @@
 /data
 
 # Ignore some files
-index2.html
-index3.html
 test*
+*.txt
 *.glb
 *.gltf
 *.obj

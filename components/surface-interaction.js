@@ -61,9 +61,9 @@ AFRAME.registerComponent('surface-interaction', {
     
     el.setAttribute('dynamic-body', 'true');
     el.setAttribute('sleepy', {allowSleep: true,
-                               angularDamping: 0.9,
+                               angularDamping: -0.5,
                                speedLimit: 1,
-                               linearDamping: 0.99});
+                               linearDamping: 0.9});
     el.setAttribute('collision-filter', {group: 'surface',
                                          collidesWith: 'default, hands'});
     
