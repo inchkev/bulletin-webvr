@@ -1,11 +1,11 @@
 # Bulletin
 ![Bulletin VR](project/static/assets/blong_large.png)
 
-##Introduction
+## Introduction
 We tackle social anxiety by creating a shared interactive virtual reality bulletin board to allow users to anonymously post encouraging messages.  
 
 ## Inspiration
-Social anxiety affects hundreds of thousands of people and can negatively impact social interaction and mental health. Around campus, we found bulletin boards with encouraging anonymous messages, and we felt that these anonymous bulletin boards were a viable approach to combat social anxiety. Previous studies have shown that people with social anxiety felt more comfortable with online interaction and that online interaction decreases social anxiety even more in people with high levels of social anxiety or depression. With these results, we decided that an online platform would enhance the capabilities of the aforementioned bulletin boards. Further, being online can add yet another layer of anonymity to encourage those struggling with social anxiety to contribute their voices. We also felt that creating a virtual reality platform for these bulletin boards can add interactivity and make communication feel more personal and realistic. 
+Social anxiety affects hundreds of thousands of people and can negatively impact social interaction and mental health. Around campus, we found bulletin boards with encouraging anonymous messages, and we felt that these anonymous bulletin boards were a viable approach to combat social anxiety. Previous studies have shown that people with social anxiety felt more comfortable with online interaction and that online interaction decreases social anxiety even more in people with high levels of social anxiety or depression. With these results, we decided that an online platform would enhance the capabilities of the aforementioned bulletin boards. Further, being online can add yet another layer of anonymity to encourage those struggling with social anxiety to contribute their voices. We also felt that creating a virtual reality platform for these bulletin boards can add interactivity and make communication feel more personal and realistic.
 
 ## What is WebVR?
 The advantages of a Web-based virtual reality (shortened to WebVR) application over a traditional system-dependent virtual reality application are its wide availability (as internet-connected devices are commonplace), elimination of any proprietary software or hardware, and its open-sourced nature. The code behind it is free to use and anyone can modify it, creating a continually updating landscape as developers add to and improve upon it.
