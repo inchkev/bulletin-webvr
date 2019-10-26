@@ -23,7 +23,7 @@
   </head>
 
   <body class="a-body" id="body">
-    <a-scene id="billboard" > <!-- environment="preset: default; grid: crosses" physics="gravity: 0; debug: false" stats> -->
+    <a-scene id="billboard" environment="preset: forest" > <!-- environment="preset: default; grid: crosses" physics="gravity: 0; debug: false" stats> -->
       <a-assets id="assets">
         <a-mixin id="mycursor" position="0 0 -0.5" cursor raycaster
           geometry="primitive: ring; radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32; flatShading: true"
@@ -45,7 +45,7 @@
 
       <!-- Billboard -->
       <a-entity bulletin></a-entity>
-      <a-entity bulletin-text></a-entity>
+      <a-entity id="bulletin-board" bulletin-text></a-entity>
 
       <!-- Controls -->
       <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true">
