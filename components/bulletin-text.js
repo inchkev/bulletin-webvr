@@ -1,5 +1,5 @@
 AFRAME.registerComponent('bulletin-text', {
-  
+
     init: function () {
       var el = this.el;
 
@@ -7,7 +7,7 @@ AFRAME.registerComponent('bulletin-text', {
       this.bindMethods();
       this.el.addEventListener('loaded', this.load.bind(this));
     },
-    
+
     load: function() {
       var scene = document.querySelector('a-scene');
 
@@ -33,5 +33,8 @@ AFRAME.registerComponent('bulletin-text', {
       console.log(position);
       console.log(rotation.x);
       console.log(rotation.y);
+      var x = rotation.x;
+      var y = rotation.y;
+
     }
   });
