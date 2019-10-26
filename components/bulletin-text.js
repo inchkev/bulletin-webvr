@@ -22,7 +22,7 @@ AFRAME.registerComponent('bulletin-text', {
 
     onTextPlaced: function() {
       // console.log('detected enter');
-      
+
       var cam = document.getElementById('cam');
       var position = cam.object3D.position;
       var rotation = cam.object3D.rotation;
@@ -50,10 +50,10 @@ AFRAME.registerComponent('bulletin-text', {
         return 1;
       }
 
-      this.removeTextWithID(1234);
+      //this.removeTextWithID(1234);
 
       var text = document.createElement('a-text');
-      
+
       text.setAttribute('id', id);
       text.setAttribute('position', xpos.toString() + ' ' + ypos.toString() + ' ' + zpos.toString());
       text.setAttribute('rotation', '0 ' + rot.toString() + ' 0');
