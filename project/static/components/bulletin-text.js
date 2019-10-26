@@ -21,38 +21,40 @@ AFRAME.registerComponent('bulletin-text', {
     },
 
     onTextPlaced: function() {
-      // console.log('detected enter');
-
       var cam = document.getElementById('cam');
       var position = cam.object3D.position;
       var rotation = cam.object3D.rotation;
       var x = rotation.x;
       var y = rotation.y;
 
-      // console.log(position);
-      // console.log(x);
-      // console.log(y);
-      var text = "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you."
-      var id = 1234;
-      this.addTextWithID(x, y, text, 2.5, 2.5, 2, id);
-    },
-
-    addTextWithID: function(x, y, str, r, h, mid, id) {
-      var scene = document.querySelector('a-scene');
+      var r = 2.5;
+      var h = 2.5;
+      var mid = 2;
       var camheight = 1.6;
-
-      var xpos = -r * Math.sin(y);
       var ypos = r * Math.tan(x) + camheight;
-      var zpos = -r * Math.cos(y);
-      var rot = y * (180 / Math.PI);
+
       if (ypos < mid - h/2 || ypos > mid + h/2) {
         console.log('Text placement out of bounds');
         return 1;
       }
 
-      //this.removeTextWithID(1234);
+      var id = 1234;
+      var text = "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you."
+      
+      this.addTextWithID(x, y, text, id);
+    },
 
+    addTextWithID: function(x, y, str, id) {
+      var scene = document.querySelector('a-scene');
       var text = document.createElement('a-text');
+
+      var r = 2.5;
+      var camheight = 1.6;
+      
+      var xpos = -r * Math.sin(y);
+      var ypos = r * Math.tan(x) + camheight;
+      var zpos = -r * Math.cos(y);
+      var rot = y * (180 / Math.PI);
 
       text.setAttribute('id', id);
       text.setAttribute('position', xpos.toString() + ' ' + ypos.toString() + ' ' + zpos.toString());
@@ -61,11 +63,10 @@ AFRAME.registerComponent('bulletin-text', {
       text.setAttribute('text', textvalue);
       text.setAttribute('font', 'sourcecodepro');
       text.setAttribute('wrap-count', 25);
+      scene.appendChild(text);
 
       // text.setAttribute('geometry', 'primitive: plane; height: auto; width: auto');
       // text.setAttribute('material', 'color: #FFFFFF');
-
-      scene.appendChild(text);
     },
 
     removeTextWithID: function(id) {
