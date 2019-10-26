@@ -8,6 +8,6 @@
 - Kevin Chen
 - Mykyta Solonko
 - Hamilton Wan
-- Brandon Zhu
+- Brandon Zhu: Cloud
 
 ![B VR](assets/bulletin.png)
