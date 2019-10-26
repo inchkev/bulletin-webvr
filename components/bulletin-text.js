@@ -16,7 +16,8 @@ AFRAME.registerComponent('bulletin-text', {
 
     bindMethods: function() {
       this.onTextPlaced = this.onTextPlaced.bind(this);
-      this.placeText = this.placeText.bind(this);
+      this.addTextWithID = this.addTextWithID.bind(this);
+      this.removeTextWithID = this.removeTextWithID.bind(this);
     },
 
     onTextPlaced: function() {
@@ -32,12 +33,13 @@ AFRAME.registerComponent('bulletin-text', {
       console.log(x);
       console.log(y);
       var text = "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you."
-      this.placeText(x, y, text, 2.5, 2.5, 2);
+      var id = 1234;
+      this.addTextWithID(x, y, text, 2.5, 2.5, 2, id);
     },
 
-    placeText: function(x, y, str, r, h, mid) {
-      var camheight = 1.6;
+    addTextWithID: function(x, y, str, r, h, mid, id) {
       var scene = document.querySelector('a-scene');
+      var camheight = 1.6;
 
       var xpos = -r * Math.sin(y);
       var ypos = r * Math.tan(x) + camheight;
@@ -48,11 +50,11 @@ AFRAME.registerComponent('bulletin-text', {
         return;
       }
 
-      // console.log(xpos);
-      // console.log(ypos);
-      // console.log(zpos);
+      this.removeTextWithID(1234);
+
       var text = document.createElement('a-text');
       
+      text.setAttribute('id', id);
       text.setAttribute('position', xpos.toString() + ' ' + ypos.toString() + ' ' + zpos.toString());
       text.setAttribute('rotation', '0 ' + rot.toString() + ' 0');
       var textvalue = 'color: white; align: center; font: sourcecodepro; width: 1.25; value: ' + str;
@@ -64,5 +66,13 @@ AFRAME.registerComponent('bulletin-text', {
       // text.setAttribute('material', 'color: #FFFFFF');
 
       scene.appendChild(text);
+    },
+
+    removeTextWithID: function(id) {
+      var elem = document.getElementById(id);
+      var scene = document.querySelector('a-scene');
+      if (elem != null) {
+        return scene.removeChild(elem);
+      }
     }
   });
