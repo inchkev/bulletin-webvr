@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VR Bulletin Boards</title>
+
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras/dist/aframe-extras.min.js"></script>
+
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-tooltip-component/dist/aframe-tooltip-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-input-mapping-component/dist/aframe-input-mapping-component.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+
+    <script src="static/components/bulletin.js"></script>
+    <script src="static/components/bulletin-text.js"></script>
+    <script src="static/systems/interaction.js"></script>
+  </head>
+  </head>
+
+  <body class="a-body" id="body">
+    <a-scene id="billboard" environment="preset: forest" stats> <!-- environment="preset: default; grid: crosses" physics="gravity: 0; debug: false" stats> -->
+      <a-assets id="assets">
+        <a-mixin id="mycursor" position="0 0 -0.5" cursor raycaster
+          geometry="primitive: ring; radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32; flatShading: true"
+          material="color: white; shader: flat; opacity: 0.5"></a-mixin>
+        </a-mixin>
+
+        <a-mixin id="note" class="note"
+          color="#4CC3D9">
+        </a-mixin>
+
+        <img id="grass" src="static/assets/scenicpanorama.jpg">
+        <img id="" src="">
+        <img id="" src="">
+
+      </a-assets>
+
+      <!-- Background -->
+      <!-- <a-sky id="background-360-image" radius="10" src="#grass"></a-sky> -->
+
+      <!-- Billboard -->
+      <a-entity bulletin></a-entity>
+      <a-entity id="bulletin-board" bulletin-text></a-entity>
+
+      <!-- Controls -->
+      <!-- <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true"> -->
+        <!-- <a-entity id="rhand" class="right-controller" haptics controller-interaction ui-raycaster></a-entity>
+        <a-entity id="lhand" class="left-controller"  haptics controller-interaction ui-raycaster></a-entity> -->
+      <!-- </a-entity> -->
+      <!-- Camera -->
+      <a-entity id="cam" class="cam" camera look-controls wasd-controls="false" position="0 1.6 0">
+        <a-entity mixin="mycursor"><a-entity>
+      </a-entity>
+      <!-- <a-entity id="cam" camera universal-controls='movementControls: universal-oculus-touch, keyboard;'></a-entity> -->
+
+    </a-scene>
+  </body>
+</html>
