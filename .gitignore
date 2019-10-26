@@ -1,9 +1,11 @@
 # Ignore experiments and tests
 /__pycache__
+/virt
+/env
 
 # Ignore some files
 test*
-*.txt
+wordlist.txt
 *.glb
 *.gltf
 *.obj
