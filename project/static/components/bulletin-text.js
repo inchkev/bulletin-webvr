@@ -32,7 +32,6 @@ AFRAME.registerComponent('bulletin-text', {
 
     load: function() {
       var scene = document.querySelector('a-scene');
-
       scene.addEventListener('textPlace', this.onTextPlaced);
     },
 
@@ -142,6 +141,7 @@ AFRAME.registerComponent('bulletin-text', {
     }
   });
 
+
 // makes server request and gets most recent messages in the rooms
 function getMessages(){
     $.ajax({
@@ -149,7 +149,7 @@ function getMessages(){
             dataType: 'json',
             contentType: 'application/json',
             url: 'getinput',
-    data: JSON.stringify({messages: getJSONEDMessages(), room: ROOM_NUMBER})
+            data: JSON.stringify({messages: getJSONEDMessages(), room: ROOM_NUMBER})
     })
     .done(function(data) {
     // returns list of ids to remove, ids to add along with their content
@@ -211,3 +211,5 @@ function getJSONEDMessages(){
     }
     return lst;
 }
+
+setInterval(function(){getMessages()}, 5000);

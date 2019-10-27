@@ -35,9 +35,7 @@ def getinput():
     if request.method == 'POST':
         try:
             values = request.get_json()
-            print(values)
             messages = process_messages(values)
-            print(messages)
             (to_add, to_remove) = generate_return_lists(messages)
 
             '''for key in messages.keys():
