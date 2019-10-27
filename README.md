@@ -3,7 +3,7 @@
 
 ## Bulletin VR
 
-A WebVR bulletin board for sharing anonymous messages. Try it out now at [https://bulletinvr.online](https://bulletinvr.online)! This was part of our submission for YHack 2019. Checkout our [Devpost project](https://devpost.com/software/bulletin-fq1kaz)!
+A WebVR bulletin board for sharing anonymous messages. Try it out now at [https://bulletinvr.online](https://bulletinvr.online)! This was part of our submission for YHack 2019, which won the Best VR/Gaming Hack. Checkout our [Devpost project](https://devpost.com/software/bulletin-fq1kaz)! 
 
 ## Inspiration
 
