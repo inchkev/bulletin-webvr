@@ -1,5 +1,5 @@
 AFRAME.registerSystem('interaction', {
-  
+
   init: function () {
     var inputActions = {
       default: {
@@ -10,15 +10,15 @@ AFRAME.registerSystem('interaction', {
         textPlace: {label: 'Place text'}
       }
     };
-    
+
     var mappings = {
       behaviours: {},
       mappings: {
         default: {
           common: {
-            triggerdown: 'textPlace'
+            touchStart: 'textPlace'
           },
-          
+
           'vive-controls': {
             'trigger.down': 'textPlace',
           },

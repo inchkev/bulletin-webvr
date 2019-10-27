@@ -1,5 +1,6 @@
 var MESSAGES = [];
-
+var CLICKS = 0;
+var CLICK_BOOL = false;
 AFRAME.registerComponent('bulletin-text', {
     // schema: {
     //   room: {type: 'int', default: 1}
@@ -32,6 +33,27 @@ AFRAME.registerComponent('bulletin-text', {
     load: function() {
       var scene = document.querySelector('a-scene');
       scene.addEventListener('textPlace', this.onTextPlaced);
+
+
+  function makeDoubleClick(singleClickCallback) {
+    var clickk = 0, timeout;
+    return function() {
+        clickk++;
+        CLICKS++;
+
+        if (clickk == 1) {
+            singleClickCallback && singleClickCallback.apply(this, arguments);
+            timeout = setTimeout(function() { clickk = 0;CLICKS=0; CLICK_BOOL=false}, 300);
+        }
+        if (CLICKS > 3 && !CLICK_BOOL){
+          console.log("Double");
+          CLICK_BOOL = true;
+          scene.emit('textPlace');
+        }
+    };
+}
+  var singleClick = function(){  };
+  document.getElementById("billboard").addEventListener('mousedown', makeDoubleClick(singleClick));
     },
 
     bindMethods: function() {
@@ -210,4 +232,5 @@ function getJSONEDMessages(){
     return lst;
 }
 
-setInterval(function(){getMessages()}, 5000);
+
+setInterval(function(){getMessages()}, 2000);
