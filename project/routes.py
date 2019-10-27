@@ -35,8 +35,9 @@ def getinput():
     if request.method == 'POST':
         try:
             values = request.get_json()
-            messages = process_messages(values)
-            (to_add, to_remove) = generate_return_lists(messages)
+            room = values["room"]
+            messages = process_messages(values["messages"])
+            (to_add, to_remove) = generate_return_lists(messages, room)
 
             '''for key in messages.keys():
                 messages_in_db = Messages.query.filter_by(id=key).all()
@@ -62,28 +63,31 @@ def submit():
     if request.method == 'POST':
         try:
             values = request.get_json()
+            room = values["room"]
             messages = process_messages(values["messages"])
             message_approved = is_bad_message(values["message"])
             if message_approved == False:
-                new_id = get_available_id()
+                new_id = get_available_id(room)
                 #replaces oldest entry
                 if new_id == False:
                     #gets minimum primary key (oldest message)
-                    to_replace = Message.query.order_by(asc(Message.id)).first()
+                    to_replace = Message.query.filter_by(room_id=room).order_by(asc(Message.id)).first()
                     db.session.delete(to_replace)
-                    new_message = Message(mes_id=to_replace.mes_id, content = values["message"], xrot=values["xrot"], yrot=values["yrot"])
+                    new_message = Message(mes_id=to_replace.mes_id, content = values["message"], xrot=values["xrot"], yrot=values["yrot"], room_id=room)
                 #just adds a new entry
                 else:
-                    new_message = Message(mes_id=new_id, content = values["message"], xrot=values["xrot"], yrot=values["yrot"])
+                    new_message = Message(mes_id=new_id, content = values["message"], xrot=values["xrot"], yrot=values["yrot"], room_id=room)
                 db.session.add(new_message)
                 db.session.commit()
-            (to_add, to_remove) = generate_return_lists(messages)
+                print("Committed")
+            (to_add, to_remove) = generate_return_lists(messages, room)
+            print("generated lists")
             return jsonify({"toAdd":to_add, "toRemove": to_remove, "approved": not message_approved})
         except:
             return jsonify({"error":"error"})
 
-def get_available_id():
-    messages = Message.query.with_entities(Message.mes_id).all()
+def get_available_id(room):
+    messages = Message.query.filter_by(room_id=room).with_entities(Message.mes_id).all()
     #makes list of used ids
     ids = [i[0] for i in messages]
     #if we have not used all of our allotted messages, just use the next ID (auto-increment basically)
@@ -102,8 +106,8 @@ def process_messages(m):
     return messages_to_dict(messages)
 
 # decides what needs to be added or updated
-def generate_return_lists(messages):
-    db_messages = Message.query.all();
+def generate_return_lists(messages, room):
+    db_messages = Message.query.filter_by(room_id=room).all();
     # arrays to return to the frontend
     to_remove = []
     to_add = []
