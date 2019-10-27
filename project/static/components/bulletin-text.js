@@ -32,6 +32,7 @@ AFRAME.registerComponent('bulletin-text', {
 
     load: function() {
       var scene = document.querySelector('a-scene');
+      getMessages();
       scene.addEventListener('textPlace', this.onTextPlaced);
     },
 
