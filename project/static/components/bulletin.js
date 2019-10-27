@@ -1,20 +1,20 @@
 AFRAME.registerComponent('bulletin', {
-  
+
     init: function () {
       this.bindMethods();
       this.el.addEventListener('loaded', this.load.bind(this));
     },
-    
+
     load: function() {
       var scene = document.querySelector('a-scene');
-      this.initBulletin(3, 3, 2, 'wellness');
+      this.initBulletin(3, 3, 2);
     },
 
     bindMethods: function() {
       this.initBulletin = this.initBulletin.bind(this);
     },
 
-    initBulletin: function(h, r, mid, text) {
+    initBulletin: function(h, r, mid) {
       var scene = document.querySelector('a-scene');
 
       var board = document.createElement('a-entity');
@@ -23,20 +23,19 @@ AFRAME.registerComponent('bulletin', {
       board.setAttribute('position', '0 ' + mid + ' 0');
       scene.appendChild(board);
 
-      var banner = document.createElement('a-text');
-      banner.setAttribute('id', 'bulletin-banner');
-      banner.setAttribute('geometry', 'primitive: plane; height: auto; width: 3.75');
-      banner.setAttribute('material', 'color: #FFFFFF');
-      
-      var y = mid + h/2 - 0.5;
-      var z = -r + 0.75;
-      var str = 'Welcome to the ' + text + ' bulletin!\nPlease be mindful of what you post.'
-      banner.setAttribute('position', '0 ' + y.toString() + ' ' + z.toString());
-      
-      var bannervalue = 'color: white; baseline: center; align: center; width: 4.5; value: ' + str;
-      banner.setAttribute('text', bannervalue);
-      banner.setAttribute('font', 'roboto');
-      banner.setAttribute('wrap-count', 38);
-      scene.appendChild(banner);
+      // var banner = document.createElement('a-text');
+      // banner.setAttribute('id', 'bulletin-banner');
+      // banner.setAttribute('geometry', 'primitive: plane; height: auto; width: 3.75');
+      // banner.setAttribute('material', 'color: #FFFFFF');
+      //
+      // var y = mid + h/2 - 0.5;
+      // var z = -r + 0.75;
+      // banner.setAttribute('position', '0 ' + y.toString() + ' ' + z.toString());
+      //
+      // var bannervalue = 'color: white; baseline: center; align: center; width: 4.5; value: ' + text;
+      // banner.setAttribute('text', bannervalue);
+      // banner.setAttribute('font', 'roboto');
+      // banner.setAttribute('wrap-count', 38);
+      // scene.appendChild(banner);
     }
   });

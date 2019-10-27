@@ -11,3 +11,8 @@ wordlist.txt
 *.obj
 *.ai
 *.db
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

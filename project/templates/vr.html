@@ -21,6 +21,7 @@
   </head>
 
   <body class="a-body" id="body">
+    <div id="roomN" data-room-id="{{room_id}}"></div>
     <a-scene id="billboard" environment="preset: default" keyboard-shortcuts="enterVR: false" stats> <!-- environment="preset: default; grid: crosses" physics="gravity: 0; debug: false" stats> -->
       <a-assets id="assets">
         <a-mixin id="mycursor" position="0 0 -0.5" cursor raycaster
@@ -30,8 +31,9 @@
       </a-assets>
 
       <!-- Billboard -->
-      <a-entity bulletin></a-entity>
-      <a-entity id="bulletin-board" bulletin-text="room: 1"></a-entity>
+      <!-- <a-entity id="bulletin" bulletin></a-entity> -->
+      <a-entity id="bulletin" bulletin></a-entity>
+      <a-entity id="bulletin-board" bulletin-text=""></a-entity>
 
       <!-- Controls -->
       <!-- <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true"> -->
@@ -46,11 +48,33 @@
       <!-- <a-entity> <a-camera look-controls-enabled wasd-controls-enabled mouse-cursor></a-camera></a-entity> -->
     </a-scene>
     <script>
-      var ROOM_NUMBER = {{room_id}};
       var environments = ["forest", "osiris", "threetowers"];
+      var room_desc = ["Welcome to the wellness room.\nTalk about how your day went!",
+       "This is the story-telling room.\nCollaborate with others to write a story!",
+        "In this room, you can talk about\nanything that you have on your mind."];
       var scene = document.querySelector('a-scene');
+      var ROOM_NUMBER = $("#roomN").data("room-id");
       var env = environments[ROOM_NUMBER-1];
       scene.setAttribute("environment", "preset: " + env);
+      getMessages();
+      var bulletin = document.getElementById('bulletin');
+      var room_text = room_desc[ROOM_NUMBER-1];
+
+      var banner = document.createElement('a-text');
+      banner.setAttribute('id', 'bulletin-banner');
+      banner.setAttribute('geometry', 'primitive: plane; height: auto; width: 3.75');
+      banner.setAttribute('material', 'color: #FFFFFF');
+
+      var y = 2 + 3/2 - 0.5;
+      var z = -3 + 0.75;
+      banner.setAttribute('position', '0 ' + y.toString() + ' ' + z.toString());
+
+      var bannervalue = 'color: white; baseline: center; align: center; width: 4.25; value: ' + room_text;
+      banner.setAttribute('text', bannervalue);
+      banner.setAttribute('font', 'roboto');
+      banner.setAttribute('wrap-count', 38);
+      scene.appendChild(banner);
+      // bulletin.setAttribute('bulletin', 'room: ' + room_text);
 
     </script>
   </body>

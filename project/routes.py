@@ -9,7 +9,7 @@ import json
 from sqlalchemy import asc
 
 
-MAX_MESSAGES = 5
+MAX_MESSAGES = 20
 
 # SERVING WEBPAGES
 @application.route("/")

@@ -1,9 +1,9 @@
 var MESSAGES = [];
 
 AFRAME.registerComponent('bulletin-text', {
-    schema: {
-      room: {type: 'int', default: 1}
-    },
+    // schema: {
+    //   room: {type: 'int', default: 1}
+    // },
 
     init: function () {
       var el = this.el;
@@ -31,7 +31,6 @@ AFRAME.registerComponent('bulletin-text', {
 
     load: function() {
       var scene = document.querySelector('a-scene');
-      getMessages();
       scene.addEventListener('textPlace', this.onTextPlaced);
     },
 
@@ -46,11 +45,11 @@ AFRAME.registerComponent('bulletin-text', {
     },
 
     postMessage: function(e) {
-      console.log(this.x);
-      console.log(this.y);
-      // console.log(this.zpos);
-      // console.log(this.rot);
-      console.log(e.detail.message);
+      // console.log(this.x);
+      // console.log(this.y);
+      // // console.log(this.zpos);
+      // // console.log(this.rot);
+      // console.log(e.detail.message);
 
       submit(e.detail.message, this.x, this.y);
     },
@@ -79,7 +78,7 @@ AFRAME.registerComponent('bulletin-text', {
 
       this.addTextWithID(this.x, this.y, 'listening... trigger again to stop recording', 'listening');
 
-      console.log("breakpoint 1");
+
       this.toggleStartStop();
       // var id = 1234;
       // var text = "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you."
@@ -94,7 +93,6 @@ AFRAME.registerComponent('bulletin-text', {
         this.recognizing = false;
         scene.removeEventListener('textPlace', this.toggleStartStop);
         scene.addEventListener('textPlace', this.onTextPlaced);
-        console.log("breakpoint 3");
         this.removeTextWithID('listening');
       } else {
         scene.removeEventListener('textPlace', this.onTextPlaced);
@@ -102,7 +100,6 @@ AFRAME.registerComponent('bulletin-text', {
         // this.message = '';
         this.recognition.start();
         this.recognizing = true;
-        console.log("breakpoint 2");
       }
     },
 
@@ -166,6 +163,7 @@ function submit(message, x, y){
     }
     console.log(message);
     // the server returns the usual new messages and ids to remove, along with a boolean specifying if message was accepted
+
     $.ajax({
     type: 'POST',
             dataType: 'json',
