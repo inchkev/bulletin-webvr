@@ -1,5 +1,4 @@
 var MESSAGES = [];
-var ROOM_NUMBER = 1;
 
 AFRAME.registerComponent('bulletin-text', {
     schema: {
@@ -84,7 +83,7 @@ AFRAME.registerComponent('bulletin-text', {
       this.toggleStartStop();
       // var id = 1234;
       // var text = "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you."
-      
+
       // this.addTextWithID(x, y, text, id);
     },
 
@@ -113,7 +112,7 @@ AFRAME.registerComponent('bulletin-text', {
 
       var r = 2.5;
       var camheight = 1.6;
-      
+
       var x_pos = -r * Math.sin(y);
       var y_pos = r * Math.tan(x) + camheight;
       var z_pos = -r * Math.cos(y);

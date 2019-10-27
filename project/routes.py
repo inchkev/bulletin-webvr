@@ -20,9 +20,13 @@ def index():
 def rooms():
     return render_template("rooms.html")
 
-@application.route("/wellness")
+@application.route("/room", methods=['GET'])
 def wellness():
-    return render_template("vr.html")
+    if 'n' not in request.args:
+        tab_num = 1
+    else:
+        tab_num = int(request.args.get("n"))
+    return render_template("vr.html", room_id=tab_num)
 
 @application.route("/test")
 def test():
