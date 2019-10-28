@@ -1,5 +1,5 @@
 # Bulletin
-![Bulletin VR](project/static/assets/bshort_large.png)
+![Bulletin VR](project/static/assets/bshort.png)
 
 ## Bulletin VR
 
