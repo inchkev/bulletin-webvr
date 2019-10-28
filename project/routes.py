@@ -135,7 +135,7 @@ def generate_return_lists(messages, room):
 def is_bad_message(msg):
    if(profanity.contains_profanity(msg)):
        return True
-   with open('phrases.json') as f:
+   with open('project/phrases.json') as f:
        data = json.load(f)
    for phrase in data:
        for word in data[phrase]:
