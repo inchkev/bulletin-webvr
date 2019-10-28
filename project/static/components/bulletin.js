@@ -22,20 +22,5 @@ AFRAME.registerComponent('bulletin', {
       board.setAttribute('material', 'color: #F7B860; opacity: 0.7; side: double');
       board.setAttribute('position', '0 ' + mid + ' 0');
       scene.appendChild(board);
-
-      // var banner = document.createElement('a-text');
-      // banner.setAttribute('id', 'bulletin-banner');
-      // banner.setAttribute('geometry', 'primitive: plane; height: auto; width: 3.75');
-      // banner.setAttribute('material', 'color: #FFFFFF');
-      //
-      // var y = mid + h/2 - 0.5;
-      // var z = -r + 0.75;
-      // banner.setAttribute('position', '0 ' + y.toString() + ' ' + z.toString());
-      //
-      // var bannervalue = 'color: white; baseline: center; align: center; width: 4.5; value: ' + text;
-      // banner.setAttribute('text', bannervalue);
-      // banner.setAttribute('font', 'roboto');
-      // banner.setAttribute('wrap-count', 38);
-      // scene.appendChild(banner);
     }
   });

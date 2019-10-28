@@ -1,15 +1,11 @@
 var MESSAGES = [];
 var CLICKS = 0;
 var CLICK_BOOL = false;
-AFRAME.registerComponent('bulletin-text', {
-    // schema: {
-    //   room: {type: 'int', default: 1}
-    // },
 
+AFRAME.registerComponent('bulletin-text', {
+  
     init: function () {
       var el = this.el;
-      // this.data.room
-
       var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
       var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
       var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
@@ -35,25 +31,25 @@ AFRAME.registerComponent('bulletin-text', {
       scene.addEventListener('textPlace', this.onTextPlaced);
 
 
-  function makeDoubleClick(singleClickCallback) {
-    var clickk = 0, timeout;
-    return function() {
-        clickk++;
-        CLICKS++;
+      function makeDoubleClick(singleClickCallback) {
+        var clickk = 0, timeout;
+        return function() {
+          clickk++;
+          CLICKS++;
 
-        if (clickk == 1) {
-            singleClickCallback && singleClickCallback.apply(this, arguments);
-            timeout = setTimeout(function() { clickk = 0;CLICKS=0; CLICK_BOOL=false}, 300);
-        }
-        if (CLICKS > 3 && !CLICK_BOOL){
-          console.log("Double");
-          CLICK_BOOL = true;
-          scene.emit('textPlace');
-        }
-    };
-}
-  var singleClick = function(){  };
-  document.getElementById("billboard").addEventListener('mousedown', makeDoubleClick(singleClick));
+          if (clickk == 1) {
+              singleClickCallback && singleClickCallback.apply(this, arguments);
+              timeout = setTimeout(function() { clickk = 0;CLICKS=0; CLICK_BOOL=false}, 300);
+          }
+          if (CLICKS > 3 && !CLICK_BOOL){
+            console.log("Double");
+            CLICK_BOOL = true;
+            scene.emit('textPlace');
+          }
+        };
+      }
+      var singleClick = function(){  };
+      document.getElementById("billboard").addEventListener('mousedown', makeDoubleClick(singleClick));
     },
 
     bindMethods: function() {
@@ -67,12 +63,6 @@ AFRAME.registerComponent('bulletin-text', {
     },
 
     postMessage: function(e) {
-      // console.log(this.x);
-      // console.log(this.y);
-      // // console.log(this.zpos);
-      // // console.log(this.rot);
-      // console.log(e.detail.message);
-
       submit(e.detail.message, this.x, this.y);
     },
 
@@ -99,13 +89,7 @@ AFRAME.registerComponent('bulletin-text', {
       }
 
       this.addTextWithID(this.x, this.y, 'listening... trigger again to stop recording', 'listening');
-
-
       this.toggleStartStop();
-      // var id = 1234;
-      // var text = "If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you."
-
-      // this.addTextWithID(x, y, text, id);
     },
 
     toggleStartStop: function() {
@@ -119,7 +103,6 @@ AFRAME.registerComponent('bulletin-text', {
       } else {
         scene.removeEventListener('textPlace', this.onTextPlaced);
         scene.addEventListener('textPlace', this.toggleStartStop);
-        // this.message = '';
         this.recognition.start();
         this.recognizing = true;
       }
@@ -145,6 +128,7 @@ AFRAME.registerComponent('bulletin-text', {
       text.setAttribute('font', 'sourcecodepro');
       text.setAttribute('wrap-count', 25);
       scene.appendChild(text);
+
       // text.setAttribute('geometry', 'primitive: plane; height: auto; width: auto');
       // text.setAttribute('material', 'color: #FFFFFF');
     },
@@ -163,74 +147,77 @@ AFRAME.registerComponent('bulletin-text', {
 
 // makes server request and gets most recent messages in the rooms
 function getMessages(){
-    $.ajax({
+  $.ajax({
     type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: 'getinput',
-            data: JSON.stringify({messages: getJSONEDMessages(), room: ROOM_NUMBER})
-    })
-    .done(function(data) {
+    dataType: 'json',
+    contentType: 'application/json',
+    url: 'getinput',
+    data: JSON.stringify({messages: getJSONEDMessages(), room: ROOM_NUMBER})
+  })
+  .done(function(data) {
     // returns list of ids to remove, ids to add along with their content
     console.log(data);
     updateBoard(data["toAdd"], data["toRemove"]);
-    });
+  });
 }
+
 // sends message to server for approval
 // server returns an array consisting of [boolean message accepted, new messsages array]
 function submit(message, x, y){
-    if(message.indexOf("***")!=-1){
+  if(message.indexOf("***") != -1){
     alert("Your message has not been approved due to inappropriate content.");
     return;
-    }
-    console.log(message);
-    // the server returns the usual new messages and ids to remove, along with a boolean specifying if message was accepted
+  }
+  console.log(message);
+  // the server returns the usual new messages and ids to remove, along with a boolean specifying if message was accepted
 
-    $.ajax({
+  $.ajax({
     type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: 'submit',
-            data: JSON.stringify({messages: getJSONEDMessages(), message: message, xrot: x, yrot:y, room: ROOM_NUMBER})
-    })
-    .done(function(data) {
+    dataType: 'json',
+    contentType: 'application/json',
+    url: 'submit',
+    data: JSON.stringify({messages: getJSONEDMessages(), message: message, xrot: x, yrot:y, room: ROOM_NUMBER})
+  })
+  .done(function(data) {
     if(!data["approved"]){
-        alert("Your message has not been approved due to inappropriate content.");
+      alert("Your message has not been approved due to inappropriate content.");
     }
     console.log(data);
     updateBoard(data["toAdd"], data["toRemove"]);
-    });
-}
-function updateBoard(toAdd, toRemove){
-    //removing elements
-    console.log(toRemove);
-    var bulletin = document.getElementById('bulletin-board');
-    for(var i = 0; i < toRemove.length; i++){
-      bulletin.components["bulletin-text"].removeTextWithID(toRemove[i]);
-      MESSAGES = MESSAGES.filter(m => m.id != toRemove[i]);
-    }
-    for(var j = 0; j < toAdd.length; j++){
-      var message = toAdd[j];
-      m = new Message(message["data"], message["id"], message["xrot"], message["yrot"]);
-      bulletin.components["bulletin-text"].addTextWithID(m.xrot, m.yrot, m.data, m.id);
-      console.log(m);
-      MESSAGES.push(m);
-    }
-}
-function Message(data, id, xrot, yrot){
-    this.data = data;
-    this.id = id;
-    this.xrot = xrot;
-    this.yrot = yrot;
-}
-// formats messages for sending to the server
-function getJSONEDMessages(){
-    lst = [];
-    for(var i = 0; i < MESSAGES.length; i++){
-    lst.push(JSON.stringify(MESSAGES[i]));
-    }
-    return lst;
+  });
 }
 
+function updateBoard(toAdd, toRemove){
+  //removing elements
+  console.log(toRemove);
+  var bulletin = document.getElementById('bulletin-board');
+  for(var i = 0; i < toRemove.length; i++){
+    bulletin.components["bulletin-text"].removeTextWithID(toRemove[i]);
+    MESSAGES = MESSAGES.filter(m => m.id != toRemove[i]);
+  }
+  for(var j = 0; j < toAdd.length; j++){
+    var message = toAdd[j];
+    m = new Message(message["data"], message["id"], message["xrot"], message["yrot"]);
+    bulletin.components["bulletin-text"].addTextWithID(m.xrot, m.yrot, m.data, m.id);
+    console.log(m);
+    MESSAGES.push(m);
+  }
+}
+
+function Message(data, id, xrot, yrot){
+  this.data = data;
+  this.id = id;
+  this.xrot = xrot;
+  this.yrot = yrot;
+}
+
+// formats messages for sending to the server
+function getJSONEDMessages(){
+  lst = [];
+  for(var i = 0; i < MESSAGES.length; i++){
+    lst.push(JSON.stringify(MESSAGES[i]));
+  }
+  return lst;
+}
 
 setInterval(function(){getMessages()}, 2000);
