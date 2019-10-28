@@ -1,5 +1,5 @@
 # Bulletin
-![Bulletin VR](project/static/assets/bshort.png)
+![Bulletin VR](project/static/assets/blong_large.png)
 
 ## Bulletin VR
 
@@ -60,7 +60,9 @@ python application.py
 
 Now you can go to `http://localhost:5000/` and use the application.
 
-![B VR](project/static/assets/blong_large.png)
+---
+
+![B VR](project/static/assets/bshort.png)
 
 ## Team Members
 - [Kevin Chen](https://github.com/k3vnchen), [kevin.n.chen@yale.edu](mailto:kevin.n.chen@yale.edu)
