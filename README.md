@@ -1,5 +1,5 @@
 # Bulletin
-![Bulletin VR](project/static/assets/blong_large.png)
+![Bulletin VR](project/static/assets/bshort_large.png)
 
 ## Bulletin VR
 
@@ -66,4 +66,4 @@ Now you can go to `http://localhost:5000/` and use the application.
 - [Hamilton Wan](https://github.com/wanh23), [hamilton.wan@yale.edu](mailto:hamilton.wan@yale.edu)
 - [Brandon Zhu](https://github.com/quinamatics), [brandon.zhu@yale.edu](mailto:brandon.zhu@yale.edu)
 
-![B VR](project/static/assets/bulletin.png)
+![B VR](project/static/assets/blong_large.png)
