@@ -2,6 +2,8 @@
 ![Bulletin VR](project/static/assets/blong_large.png)
 **Bulletin is a WebVR bulletin board for sharing anonymous messages.** This was part of our submission for YHack 2019, which won the Best VR/Gaming Hack. Checkout our [Devpost project](https://devpost.com/software/bulletin-fq1kaz)! 
 
+---
+
 ## Inspiration
 
 Social anxiety affects hundreds of thousands of people and can negatively impact social interaction and mental health. Around campuses and schools, we were inspired by bulletin boards with encouraging anonymous messages, and we felt that these anonymous message boards were an inspiring source of humanity. With Bulletin, we aim to bring this public yet anonymous way of spreading words of wisdom to as many people as possible. Previous studies have even shown that online interaction decreased social anxiety in people with high levels of anxiety or depression.
