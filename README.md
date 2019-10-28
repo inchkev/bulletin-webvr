@@ -9,6 +9,8 @@ A WebVR bulletin board for sharing anonymous messages. This was part of our subm
 
 Social anxiety affects hundreds of thousands of people and can negatively impact social interaction and mental health. Around campuses and schools, we were inspired by bulletin boards with encouraging anonymous messages, and we felt that these anonymous message boards were an inspiring source of humanity. With Bulletin, we aim to bring this public yet anonymous way of spreading words of wisdom to as many people as possible. Previous studies have even shown that online interaction decreased social anxiety in people with high levels of anxiety or depression.
 
+![Bulletin viewed in a VR headset](project/static/img/screenshot2.png)
+
 ## What it does
 
 Bulletin is a website for posting anonymous messages. Bulletin's various boards are virtual reality spaces for users to enter messages. Bulletin uses speech-to-text to create a sense of community within the platform, as everything you see has been spoken by other users. To ensure anonymity, Bulletin does not store any of its users data, and only stores a number of recent messages. Bulletin uses language libraries to detect and filter negative words and profanity. To try Bulletin ([https://bulletinvr.online](https://bulletinvr.online)), simply enter one of the bulletin boards and double tap or press the enter key to start recording your message.
