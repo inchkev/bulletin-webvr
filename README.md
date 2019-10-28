@@ -60,10 +60,10 @@ python application.py
 
 Now you can go to `http://localhost:5000/` and use the application.
 
+![B VR](project/static/assets/blong_large.png)
+
 ## Team Members
 - [Kevin Chen](https://github.com/k3vnchen), [kevin.n.chen@yale.edu](mailto:kevin.n.chen@yale.edu)
 - [Mykyta Solonko](https://github.com/msolonko), [mykyta.solonko@yale.edu](mailto:mykyta.solonko@yale.edu)
 - [Hamilton Wan](https://github.com/wanh23), [hamilton.wan@yale.edu](mailto:hamilton.wan@yale.edu)
 - [Brandon Zhu](https://github.com/quinamatics), [brandon.zhu@yale.edu](mailto:brandon.zhu@yale.edu)
-
-![B VR](project/static/assets/blong_large.png)
