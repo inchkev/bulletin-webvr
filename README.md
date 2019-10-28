@@ -63,7 +63,7 @@ Now you can go to `http://localhost:5000/` and use the application.
 
 ![B VR](project/static/assets/bshort.png)
 
-## Team Members
+## Our team
 - [Kevin Chen](https://github.com/k3vnchen), [kevin.n.chen@yale.edu](mailto:kevin.n.chen@yale.edu)
 - [Mykyta Solonko](https://github.com/msolonko), [mykyta.solonko@yale.edu](mailto:mykyta.solonko@yale.edu)
 - [Hamilton Wan](https://github.com/wanh23), [hamilton.wan@yale.edu](mailto:hamilton.wan@yale.edu)
