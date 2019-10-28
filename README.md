@@ -1,9 +1,6 @@
 # Bulletin
 ![Bulletin VR](project/static/assets/blong_large.png)
-
-## Bulletin VR
-
-A WebVR bulletin board for sharing anonymous messages. This was part of our submission for YHack 2019, which won the Best VR/Gaming Hack. Checkout our [Devpost project](https://devpost.com/software/bulletin-fq1kaz)! 
+**Bulletin is a WebVR bulletin board for sharing anonymous messages.** This was part of our submission for YHack 2019, which won the Best VR/Gaming Hack. Checkout our [Devpost project](https://devpost.com/software/bulletin-fq1kaz)! 
 
 ## Inspiration
 
@@ -13,7 +10,7 @@ Social anxiety affects hundreds of thousands of people and can negatively impact
 
 ## What it does
 
-Bulletin is a website for posting anonymous messages. Bulletin's various boards are virtual reality spaces for users to enter messages. Bulletin uses speech-to-text to create a sense of community within the platform, as everything you see has been spoken by other users. To ensure anonymity, Bulletin does not store any of its users data, and only stores a number of recent messages. Bulletin uses language libraries to detect and filter negative words and profanity. To try Bulletin ([https://bulletinvr.online](https://bulletinvr.online)), simply enter one of the bulletin boards and double tap or press the enter key to start recording your message.
+Bulletin's various boards are virtual reality spaces for users to enter messages. Bulletin uses speech-to-text to create a sense of community within the platform, as everything you see has been spoken by other users. To ensure anonymity, Bulletin does not store any of its users data, and only stores a number of recent messages. Bulletin uses language libraries to detect and filter negative words and profanity. To try Bulletin ([https://bulletinvr.online](https://bulletinvr.online)), simply enter one of the bulletin boards and double tap or press the enter key to start recording your message.
 
 ## What is WebVR?
 
@@ -26,7 +23,7 @@ The back-end service is written in Python. Our JS scripts use AJAX to make reque
 
 ## Installation
 
-Installing everything is very simple. After cloning the Repo to your computer, enter the folder.
+After cloning the repo to your computer, enter the directory.
 
 If you don't have `virtualenv` installed for Python, run
 ``` bash
